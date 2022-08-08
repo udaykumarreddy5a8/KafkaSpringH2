@@ -1,0 +1,10 @@
+Download STS
+
+Create project using spring starter. refer maven pom.xml for the dependencies
+
+once downloaded import as maven project to STS
+
+give right click on the project choose maven option then click on update maven project
+
+Run as spring boot app so that we can see the console for logs
+
