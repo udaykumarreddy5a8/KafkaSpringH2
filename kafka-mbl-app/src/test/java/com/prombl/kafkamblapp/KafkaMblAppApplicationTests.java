@@ -1,0 +1,13 @@
+package com.prombl.kafkamblapp;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+
+@SpringBootTest
+class KafkaMblAppApplicationTests {
+
+	@Test
+	void contextLoads() {
+	}
+
+}
