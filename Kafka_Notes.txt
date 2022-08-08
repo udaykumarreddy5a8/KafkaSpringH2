@@ -1,0 +1,44 @@
+Step-1:
+
+Download kafka from below website
+https://downloads.apache.org/kafka/3.2.1/kafka_2.12-3.2.1.tgz
+
+Step-2:
+
+Extract to any of the folder like below
+
+E:\MY_WORKS\MYSPRINGWORKSPACE\kafka_3
+
+Step-3:
+
+Open command prompt then run below steps to start kafka
+
+cd E:\MY_WORKS\MYSPRINGWORKSPACE\kafka_3
+start cmd /k bin\windows\zookeeper-server-start.bat config\zookeeper.properties
+start cmd /k bin\windows\kafka-server-start.bat config\server.properties
+
+Step-4:
+
+Open command prompt then run the below steps to create topic
+
+cd E:\MY_WORKS\MYSPRINGWORKSPACE\kafka_3
+
+-->First Time
+
+bin\windows\kafka-topics.bat --create --bootstrap-server localhost:9092 --replication-factor 1 --partitions 1 --topic test
+bin\windows\kafka-topics.bat --create --bootstrap-server localhost:9092 --replication-factor 1 --partitions 1 --topic customers-log
+bin\windows\kafka-topics.bat --list --bootstrap-server localhost:9092
+
+Step-5:
+
+Open command prompt then run the below steps to check the messages coming topic
+
+--->Later for checking messages
+ 
+bin\windows\kafka-console-producer.bat --bootstrap-server localhost:9092 --topic test
+bin\windows\kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic customers-log
+
+bin\windows\kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic test --from-beginning
+bin\windows\kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic customers-log --from-beginning ---> to check
+
+
