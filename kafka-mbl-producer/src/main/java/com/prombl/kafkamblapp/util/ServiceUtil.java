@@ -17,20 +17,20 @@ public class ServiceUtil {
 	
 	public String convertToJSON(Object object) {
 		long startTime = System.currentTimeMillis();
-		logger.info("#ServiceUtil#convertToJSON#I#"+startTime);
+		logger.info("#ServiceUtil#convertToJSON#I# {}",startTime);
         try {
             if (object != null) {
-            	logger.info("#ServiceUtil#convertToJSON#Object#",object);
-            	logger.info("#ServiceUtil#convertToJSON#O#"+(System.currentTimeMillis()-startTime));
+            	logger.info("#ServiceUtil#convertToJSON#Object# {}",object);
+            	logger.info("#ServiceUtil#convertToJSON#O# {}",(System.currentTimeMillis()-startTime));
                 return mapper.writeValueAsString(object);
             } else {
             	logger.error("#ServiceUtil#convertToJSON#E#object variable is null.");
-            	logger.info("#ServiceUtil#convertToJSON#E#"+(System.currentTimeMillis()-startTime));
+            	logger.info("#ServiceUtil#convertToJSON#E# {}",(System.currentTimeMillis()-startTime));
                 throw new IllegalStateException("object variable is null.");
             }
         } catch (IOException ioe) {
         	logger.error("#ServiceUtil#convertToJSON#E#object variable parsing failed.");
-        	logger.info("#ServiceUtil#convertToJSON#E#"+(System.currentTimeMillis()-startTime));
+        	logger.info("#ServiceUtil#convertToJSON#E# {}",(System.currentTimeMillis()-startTime));
             throw new IllegalStateException("object variable parsing failed.", ioe);
         }
     }

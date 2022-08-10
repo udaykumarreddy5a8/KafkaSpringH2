@@ -17,20 +17,20 @@ public class ServiceUtil {
 	
 	public Object convertToPOJO(String payload, Class<?> clazz) {
 		long startTime = System.currentTimeMillis();
-		logger.info("#ServiceUtil#convertToPOJO#I#"+startTime);
+		logger.info("#ServiceUtil#convertToPOJO#I# {}",startTime);
         try {
             if (payload != null) {
-            	logger.info("#ServiceUtil#convertToPOJO#payload#",payload);
-            	logger.info("#ServiceUtil#convertToPOJO#O#"+(System.currentTimeMillis()-startTime));
+            	logger.info("#ServiceUtil#convertToPOJO#payload# {}",payload);
+            	logger.info("#ServiceUtil#convertToPOJO#O# {}", (System.currentTimeMillis()-startTime));
                 return mapper.readValue(payload, clazz);
             } else {
             	logger.error("#ServiceUtil#convertToJSON#E#payload variable is null.");
-            	logger.info("#ServiceUtil#convertToJSON#E#"+(System.currentTimeMillis()-startTime));
+            	logger.info("#ServiceUtil#convertToJSON#E# {}",(System.currentTimeMillis()-startTime));
                 throw new IllegalStateException("payload variable is null.");
             }
         } catch (IOException ioe) {
         	logger.error("payload variable parsing failed.");
-        	logger.info("#ServiceUtil#convertToJSON#E#"+(System.currentTimeMillis()-startTime));
+        	logger.info("#ServiceUtil#convertToJSON#E# {}",(System.currentTimeMillis()-startTime));
             throw new IllegalStateException("payload variable parsing failed.", ioe);
         }
     }

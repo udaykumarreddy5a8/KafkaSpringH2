@@ -17,18 +17,18 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 
 @ControllerAdvice
 public class ValidationHandler extends ResponseEntityExceptionHandler{
-	private final Logger logger 
+	private final Logger log 
 	= LoggerFactory.getLogger(ValidationHandler.class);
 	@Override
 	protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex,
 			HttpHeaders headers, HttpStatus status, WebRequest request) {
 		long startTime = System.currentTimeMillis();
-		logger.info("#ValidationHandler#handleMethodArgumentNotValid#I#"+startTime);
+		log.info("#ValidationHandler#handleMethodArgumentNotValid#I# {}",startTime);
 		Map<String, Object> msgMap = new LinkedHashMap<>();
 		Map<String, String> errors = new HashMap<>();
 		try {
 			
-			ex.getBindingResult().getAllErrors().forEach((error) ->{
+			ex.getBindingResult().getAllErrors().forEach(error ->{
 				String fieldName = ((FieldError) error).getField();
 				String message = error.getDefaultMessage();
 				errors.put(fieldName, message);
@@ -41,10 +41,10 @@ public class ValidationHandler extends ResponseEntityExceptionHandler{
 			msgMap.put("status","failed");
 			msgMap.put("message","Message Send Failed");
 			msgMap.put("errorType",e.getMessage());
-        	logger.info("#ValidationHandler#handleMethodArgumentNotValid#E#"+(System.currentTimeMillis()-startTime));
+			log.info("#ValidationHandler#handleMethodArgumentNotValid#E# {}",(System.currentTimeMillis()-startTime));
 		}
-    	logger.info("#ValidationHandler#handleMethodArgumentNotValid#O#"+(System.currentTimeMillis()-startTime));
-		return new ResponseEntity<Object>(msgMap, HttpStatus.BAD_REQUEST);
+		log.info("#ValidationHandler#handleMethodArgumentNotValid#O# {}",(System.currentTimeMillis()-startTime));
+		return new ResponseEntity<>(msgMap, HttpStatus.BAD_REQUEST);
 	}
 
 }

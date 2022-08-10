@@ -2,9 +2,7 @@ package com.prombl.kafkamblapp.model;
 
 import java.util.Objects;
 
-import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -15,17 +13,17 @@ import io.swagger.v3.oas.annotations.media.Schema;
 
 public class Customer {
 	  @JsonProperty("customerNumber")
-	  @Schema(required = true)
+	  @Schema(required = true,maxLength = 10)
 	  @NotNull
 	  private String customerNumber = null;
 
 	  @JsonProperty("firstName")
-	  @Schema(required = true)
+	  @Schema(required = true,minLength = 10,maxLength = 50)
 	  @NotNull
 	  private String firstName = null;
 
 	  @JsonProperty("lastName")
-	  @Schema(required = true)
+	  @Schema(required = true,minLength = 10,maxLength = 50)
 	  @NotNull
 	  private String lastName = null;
 
@@ -40,12 +38,12 @@ public class Customer {
 	  private String country = null;
 
 	  @JsonProperty("countryCode")
-	  @Schema(required = true)
+	  @Schema(required = true,maxLength = 2)
 	  @NotNull
 	  private String countryCode = null;
 
 	  @JsonProperty("email")
-	  @Schema(required = true)
+	  @Schema(required = true,maxLength = 50)
 	  @NotNull
 	  private String email = null;
 
@@ -102,8 +100,6 @@ public class Customer {
 	   * @return customerNumber
 	  **/
 
-
-	@Size(max=10) 
 	  public String getCustomerNumber() {
 	    return customerNumber;
 	  }
@@ -122,8 +118,6 @@ public class Customer {
 	   * @return firstName
 	  **/
 
-
-	@Size(min=10,max=50) 
 	  public String getFirstName() {
 	    return firstName;
 	  }
@@ -142,8 +136,6 @@ public class Customer {
 	   * @return lastName
 	  **/
 
-
-	@Size(min=10,max=50) 
 	  public String getLastName() {
 	    return lastName;
 	  }
@@ -162,8 +154,6 @@ public class Customer {
 	   * @return birthdate
 	  **/
 
-
-	  @Valid
 	  public String getBirthdate() {
 	    return birthdate;
 	  }
@@ -181,9 +171,6 @@ public class Customer {
 	   * Get country
 	   * @return country
 	  **/
-	  
-
-
 	  public String getCountry() {
 	    return country;
 	  }
@@ -202,8 +189,6 @@ public class Customer {
 	   * @return countryCode
 	  **/
 	  
-
-	@Size(max=2) 
 	  public String getCountryCode() {
 	    return countryCode;
 	  }
@@ -222,8 +207,7 @@ public class Customer {
 	   * @return email
 	  **/
 	  
-
-	@Size(max=50) 
+ 
 	  public String getEmail() {
 	    return email;
 	  }
@@ -262,8 +246,6 @@ public class Customer {
 	   * @return address
 	  **/
 	  
-
-	  @Valid
 	  public Address getAddress() {
 	    return address;
 	  }
@@ -281,16 +263,16 @@ public class Customer {
 	    if (o == null || getClass() != o.getClass()) {
 	      return false;
 	    }
-	    Customer Customer = (Customer) o;
-	    return Objects.equals(this.customerNumber, Customer.customerNumber) &&
-	        Objects.equals(this.firstName, Customer.firstName) &&
-	        Objects.equals(this.lastName, Customer.lastName) &&
-	        Objects.equals(this.birthdate, Customer.birthdate) &&
-	        Objects.equals(this.country, Customer.country) &&
-	        Objects.equals(this.countryCode, Customer.countryCode) &&
-	        Objects.equals(this.email, Customer.email) &&
-	        Objects.equals(this.customerStatus, Customer.customerStatus) &&
-	        Objects.equals(this.address, Customer.address);
+	    Customer customer = (Customer) o;
+	    return Objects.equals(this.customerNumber, customer.customerNumber) &&
+	        Objects.equals(this.firstName, customer.firstName) &&
+	        Objects.equals(this.lastName, customer.lastName) &&
+	        Objects.equals(this.birthdate, customer.birthdate) &&
+	        Objects.equals(this.country, customer.country) &&
+	        Objects.equals(this.countryCode, customer.countryCode) &&
+	        Objects.equals(this.email, customer.email) &&
+	        Objects.equals(this.customerStatus, customer.customerStatus) &&
+	        Objects.equals(this.address, customer.address);
 	  }
 
 	  @Override
