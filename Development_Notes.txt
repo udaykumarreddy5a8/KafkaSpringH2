@@ -8,3 +8,39 @@ give right click on the project choose maven option then click on update maven p
 
 Run as spring boot app so that we can see the console for logs
 
+H2-Console
+=============
+
+http://localhost:9001/h2-console/
+
+username= sa
+password= password
+
+Swagger Console
+================
+
+http://localhost:9000/swagger-ui/index.html#/
+
+user - kfambl_user
+pwd - abc123
+
+Login
+==========
+
+http://localhost:9000/oauth/authorize?client_id=kfambl_user&response_type=code&scope=read_profile_info
+
+user - kfambl_user
+pwd - abc123
+once enter it will redirect to below url click approve and note down the code
+
+http://localhost:8081/login?code=F6I8Xy
+
+code = F6I8Xy
+
+Use postman for oauth token generation
+=======================================
+
+U need to change the code
+
+http://localhost:9000/oauth/token?scope=read_profile_info&grant_type=authorization_code&code=F6I8Xy
+
